@@ -1,0 +1,7 @@
+%p#notice= notice
+%p
+  %strong Name:
+  = @staff.name
+= link_to 'Edit', edit_staff_path(current_staff)
+|
+\#{link_to 'Back', staffs_path}

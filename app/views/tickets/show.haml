@@ -1,0 +1,28 @@
+%p#notice= notice
+%p
+  %strong Name:
+  = @ticket.name
+%p
+  %strong Email:
+  = @ticket.email
+%p
+  %strong Issue:
+  = @ticket.issue
+%p
+  %strong Body:
+  = @ticket.body
+%p
+  %strong Reference:
+  = @ticket.reference
+%p
+  %strong Status:
+  = @ticket.status
+- if current_staff && current_staff.id ==@ticket.id
+  = form_tag ticket_reply_path(@ticket) do
+    = text_area_tag 'reply'
+    = submit_tag 'Reply'
+  = link_to 'Complite ticket', ticket_status_path(@ticket,status: "Completed")
+  = link_to 'Canсel ticket', ticket_status_path(@ticket,status: "Canсeled")
+= link_to 'Edit', edit_ticket_path(@ticket)
+|
+\#{link_to 'Back', tickets_path}

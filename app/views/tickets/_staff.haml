@@ -1,0 +1,5 @@
+%td
+  - if current_staff.id != tic.staff_id
+    - if tic.status != 'Completed'
+      - if tic.status != 'Canсeled'
+        = link_to 'Own', ticket_own_path(tic)

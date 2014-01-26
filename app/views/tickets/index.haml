@@ -1,0 +1,34 @@
+%h1 Listing tickets
+= form_tag tickets_path, :method => 'get' do
+  %p
+    = text_field_tag :search, params[:search], value: ''
+    = submit_tag "Search", :name => nil
+%table
+  %thead
+    %tr
+      %th Name
+      %th Email
+      %th Issue
+      %th Body
+      %th Reference
+      %th Status
+      %th
+      %th
+      %th
+  %tbody
+    - @tickets.each do |ticket|
+      %tr
+        %td= ticket.name
+        %td= ticket.email
+        %td= ticket.issue
+        %td= ticket.body
+        %td= ticket.reference
+        %td= ticket.status
+        - if current_staff
+          %td= render "#{@part}", tic: ticket
+        %td= link_to 'Show', ticket
+%br/
+= link_to 'Completed', tickets_path(search: 'Completed')
+= link_to 'On Hold', tickets_path(search: 'On hold')
+= link_to 'Canceled', tickets_path(search: 'Canсeled')
+= link_to 'Open', tickets_path(search: 'Waiting')

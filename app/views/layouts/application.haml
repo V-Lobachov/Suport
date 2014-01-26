@@ -1,0 +1,15 @@
+!!!
+%html
+  %head
+    %title Suport
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+  %body
+    - if current_staff
+      = link_to "Sign out", destroy_staff_session_path, :method => :delete
+      = link_to "Edit Profile", edit_staff_path(current_staff)
+      = link_to "Tickets", tickets_path
+    - else
+      = link_to "For Staff", staff_session_path
+    = yield

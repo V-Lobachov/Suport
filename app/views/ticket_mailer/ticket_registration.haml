@@ -1,0 +1,12 @@
+%b
+  Hello, #{@ticket.name}
+  %b
+%p
+  Thank you for using ouer sistem.
+  Your issue was successfully registered.
+  Ticket unique reference: #{@ticket.reference}
+%p
+  %br/
+  = link_to 'Edit Ticket', edit_ticket_url(@ticket)
+  %br/
+  = link_to 'Tickets', tickets_url
